@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -w",
-    "start" : "open public/index.html && npm run build"
+    "start": "open public/index.html && npm run build"
   },
   "keywords": [],
   "author": "",

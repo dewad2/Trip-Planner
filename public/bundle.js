@@ -60,28 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-console.log('here in index.js, running Javascriiipt')
-
-const mapboxgl = __webpack_require__(1);
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWRld2FhbCIsImEiOiJjamQxdWtnNDUwaWU5MzNxZGRsOGw1dTN3In0.ZPZYioFsfTn1fNFC1a8v6w';
-
-const map = new mapboxgl.Map({
-    container: "map",
-    center: [-74.009, 40.705], // FullStack NY coordinates
-    zoom: 12, // starting zoom
-    style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
-});
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;(function(f){if(true){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.mapboxgl = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return require(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
@@ -650,6 +633,58 @@ module.exports={"$version":8,"$root":{"version":{"required":true,"type":"enum","
 
 
 //# sourceMappingURL=mapbox-gl.js.map
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+console.log('here in index.js, running Javascriiipt')
+const mapboxgl = __webpack_require__(0);
+const {buildMarker} = __webpack_require__(2);
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWRld2FhbCIsImEiOiJjamQxdWtnNDUwaWU5MzNxZGRsOGw1dTN3In0.ZPZYioFsfTn1fNFC1a8v6w';
+
+const map = new mapboxgl.Map({
+    container: "map",
+    center: [-74.009, 40.705], // FullStack NY coordinates
+    zoom: 12, // starting zoom
+    style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
+});
+
+buildMarker("restaurant", [-74.009151, 40.705086]).addTo(map);
+
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const mapboxgl = __webpack_require__(0);
+
+module.exports = {
+  buildMarker: function(markerType, coords){
+    console.log('we got here!');
+    let icon = document.createElement("div");
+
+    icon.style.width = "32px";
+    icon.style.height = "39px";
+
+    switch (markerType) {
+      case 'hotel':
+        icon.style.backgroundImage = "url(http://i.imgur.com/D9574Cu.png)";
+        break;
+      case 'restaurant':
+        icon.style.backgroundImage = "url(http://i.imgur.com/cqR6pUI.png)";
+        break;
+      default:
+        icon.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+    }
+
+    return new mapboxgl.Marker(icon).setLngLat(coords);
+  }
+}
+
 
 /***/ })
 /******/ ]);
