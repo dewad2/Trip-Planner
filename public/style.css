@@ -11,7 +11,10 @@ body {
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; 
+  background-color : #B2C9AB;
+  margin : 10px;
+  border-radius : 10px;
 }
 
 li {
@@ -24,6 +27,8 @@ li {
   display: flex;
   align-self: center;
   margin-left: 20px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 35px;
 }
 
 .nav-elem {
@@ -31,6 +36,8 @@ li {
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 20px;
+  font-family: 'Fira Sans', sans-serif;
+  font-size : 25px;
 }
 
 .main {
@@ -55,10 +62,20 @@ li {
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
-  background-color: white;
+  background-color: #F5F5F5;
   padding: 10px;
   border-style: solid;
   border-color: #284b63;
   border-width: 1px;
   border-radius: 10px;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.nav-elem li {
+  transition: all 0.25s ease-in;
+}
+
+.nav-elem li:hover {
+  background-color : #3C6E71;
+  border-radius : 10px
 }

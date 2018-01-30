@@ -640,7 +640,7 @@ module.exports={"$version":8,"$root":{"version":{"required":true,"type":"enum","
 
 console.log('here in index.js, running Javascriiipt')
 const mapboxgl = __webpack_require__(0);
-const {buildMarker} = __webpack_require__(2);
+const buildMarker = __webpack_require__(2);
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWRld2FhbCIsImEiOiJjamQxdWtnNDUwaWU5MzNxZGRsOGw1dTN3In0.ZPZYioFsfTn1fNFC1a8v6w';
 
@@ -651,7 +651,7 @@ const map = new mapboxgl.Map({
     style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
 });
 
-buildMarker("restaurant", [-74.009151, 40.705086]).addTo(map);
+buildMarker("hotel", [-74.009151, 40.705086]).addTo(map);
 
 
 
@@ -660,10 +660,10 @@ buildMarker("restaurant", [-74.009151, 40.705086]).addTo(map);
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const mapboxgl = __webpack_require__(0);
+const {Marker} = __webpack_require__(0);
 
-module.exports = {
-  buildMarker: function(markerType, coords){
+module.exports = 
+  function buildMarker(markerType, coords){
     console.log('we got here!');
     let icon = document.createElement("div");
 
@@ -681,9 +681,8 @@ module.exports = {
         icon.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
     }
 
-    return new mapboxgl.Marker(icon).setLngLat(coords);
+    return new Marker(icon).setLngLat(coords);
   }
-}
 
 
 /***/ })

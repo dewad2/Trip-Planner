@@ -1,7 +1,7 @@
-const mapboxgl = require("mapbox-gl");
+const {Marker} = require("mapbox-gl");
 
-module.exports = {
-  buildMarker: function(markerType, coords){
+module.exports = 
+  function buildMarker(markerType, coords){
     console.log('we got here!');
     let icon = document.createElement("div");
 
@@ -19,6 +19,5 @@ module.exports = {
         icon.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
     }
 
-    return new mapboxgl.Marker(icon).setLngLat(coords);
+    return new Marker(icon).setLngLat(coords);
   }
-}
